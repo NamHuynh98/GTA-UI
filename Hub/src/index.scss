@@ -2,9 +2,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Yellowtail&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @font-face {
   font-family: Pricedown;
   src: url(./assets/fonts/pricedown.otf);
+}
+@font-face {
+  font-family: Akrobat;
+  src: url(./assets/fonts/Akrobat-Black.otf);
+}
+@font-face {
+  font-family: Gilroy;
+  src: url(./assets/fonts/Gilroy-Light.otf);
 }
 
 body {
@@ -44,10 +53,89 @@ code {
   &-center {
     align-items: center;
   }
+  &-start {
+    align-items: start;
+  }
+  &-end {
+    align-items: flex-end;
+  }
 }
 
 .justify {
   &-center {
     justify-content: center;
   }
+  &-end {
+    justify-content: flex-end;
+  }
+}
+
+.gap-0 {
+  gap: 0;
+}
+.gap-1 {
+  gap: 0.25rem;
+}
+.gap-2 {
+  gap: 0.5rem;
+}
+.gap-3 {
+  gap: 0.75rem;
+}
+.gap-4 {
+  gap: 1rem;
+}
+.gap-5 {
+  gap: 1.25rem;
+}
+.gap-6 {
+  gap: 1.5rem;
+}
+.gap-8 {
+  gap: 2rem;
+}
+.gap-10 {
+  gap: 2.5rem;
+}
+.gap-12 {
+  gap: 3rem;
+}
+.gap-16 {
+  gap: 4rem;
+}
+.gap-20 {
+  gap: 5rem;
+}
+.gap-24 {
+  gap: 6rem;
+}
+.gap-32 {
+  gap: 8rem;
+}
+.gap-40 {
+  gap: 10rem;
+}
+.gap-48 {
+  gap: 12rem;
+}
+.gap-56 {
+  gap: 14rem;
+}
+.gap-64 {
+  gap: 16rem;
+}
+.gap-px {
+  gap: 1px;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.mb-auto {
+  margin-bottom: auto;
+}
+
+.my-auto {
+  margin: auto 0;
 }

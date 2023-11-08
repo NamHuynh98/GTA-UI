@@ -1,0 +1,97 @@
+.chat-box-container {
+  color: #fff;
+  font-family: Gilroy;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  width: 20vw;
+  min-width: 250px;
+
+  .msg-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 150px;
+    overflow: auto;
+
+    .item-msg {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      background-color: rgba(35, 14, 45, 0.61);
+      padding: 8px;
+      border-radius: 4px;
+      width: fit-content;
+
+      .label {
+        &.admin,
+        &.player,
+        &.ooc {
+          text-transform: uppercase;
+          background-color: transparent;
+          border: 1px solid;
+          border-radius: 2px;
+          padding: 3px 7px 2px 7px;
+          font-family: Gilroy;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: bold;
+          line-height: normal;
+        }
+
+        &.admin {
+          color: #ed3d3d;
+          text-shadow: 0px 4px 9px rgba(237, 61, 61, 0.55);
+          border-color: #ed3d3d;
+        }
+
+        &.player {
+          color: #3d99ed;
+          text-shadow: 0px 4px 9px rgba(61, 153, 237, 0.55);
+          border-color: #41a4ff;
+        }
+
+        &.ooc {
+          color: #bf3ded;
+          text-shadow: 0px 4px 9px rgba(191, 61, 237, 0.55);
+          border-color: #bf3ded;
+        }
+      }
+    }
+  }
+
+  .input-msg-container {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(35, 14, 45, 0.61);
+    padding: 12px 12px;
+    border-radius: 5px;
+
+    input {
+      background-color: transparent;
+      border: 0;
+      outline: none;
+      display: flex;
+      flex: 1 1 auto;
+      color: #fff;
+
+      &::placeholder {
+        color: #fff;
+      }
+    }
+
+    button {
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #44d05260;
+      border-radius: 5px;
+      border: 0;
+      padding: 0;
+    }
+  }
+}

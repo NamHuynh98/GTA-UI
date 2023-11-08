@@ -1,0 +1,23 @@
+.key-container {
+  padding: 1px 4px;
+  border-radius: 3px;
+  border: 1px solid #b71eff;
+  background: radial-gradient(
+    141.65% 110% at 50% 50%,
+    rgba(183, 30, 255, 0.75) 0%,
+    rgba(183, 30, 255, 0.44) 100%
+  );
+
+  color: #fff;
+  font-family: Akrobat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: normal;
+  letter-spacing: 0.08px;
+
+  @media only screen and (max-height: 800px), (max-width: 992px) {
+    font-size: 14px !important;
+    padding: 1px 6px !important;
+  }
+}

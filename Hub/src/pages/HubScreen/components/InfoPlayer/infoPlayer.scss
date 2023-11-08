@@ -1,0 +1,127 @@
+.info-player-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+
+  .logo {
+    height: 55px;
+  }
+
+  .vip-item {
+    .label {
+      padding: 2px;
+      display: flex;
+      border-radius: 5px;
+      border: 1px solid #b71eff;
+      background: radial-gradient(
+        141.65% 110% at 50% 50%,
+        rgba(183, 30, 255, 0.75) 0%,
+        rgba(183, 30, 255, 0.44) 100%
+      );
+
+      img {
+        width: 26px;
+        height: 26px;
+        object-fit: cover;
+      }
+    }
+
+    .text {
+      .title {
+        color: #fff;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 0.24px;
+      }
+
+      .content {
+        color: #fff;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 7.98px;
+      }
+    }
+  }
+
+  .mic {
+    padding: 7px;
+    display: flex;
+    border-radius: 5px;
+    border: 1px solid #22f690;
+    background: radial-gradient(
+      141.65% 110% at 50% 50%,
+      #198d55 0%,
+      rgba(29, 255, 146, 0.44) 100%
+    );
+    cursor: pointer;
+
+    svg {
+      fill: #fff;
+      width: 16px;
+      height: 16px;
+    }
+
+    &.on {
+      opacity: 1;
+    }
+
+    &.off {
+      opacity: 0.5;
+    }
+  }
+
+  .wrapper-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .label {
+      display: flex;
+      padding: 7px;
+      border-radius: 5px;
+      border: 1px solid #b71eff;
+      background: radial-gradient(
+        141.65% 110% at 50% 50%,
+        rgba(183, 30, 255, 0.75) 0%,
+        rgba(183, 30, 255, 0.44) 100%
+      );
+
+      svg {
+        fill: #fff;
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .text {
+      .title {
+        color: #fff;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 0.24px;
+      }
+
+      .content {
+        color: #fff;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+
+      .text-stretch {
+        letter-spacing: 7.98px;
+      }
+    }
+  }
+}

@@ -1,0 +1,178 @@
+.car-lock-container {
+  position: relative;
+  margin-left: 20px;
+  margin-bottom: -10px;
+
+  .gas {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    bottom: 15px;
+    left: -15px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .energy {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .wrapper-func {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    position: absolute;
+    width: 57px;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .info-race {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .numbers {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      span {
+        color: rgba(255, 255, 255, 0.55);
+        font-family: Montserrat;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      .active {
+        color: #fff;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+    }
+
+    .km {
+      color: #fff;
+      text-shadow: 0px 0px 17px #fff;
+      font-family: Montserrat;
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    .unit {
+      color: rgba(255, 255, 255, 0.55);
+      font-family: Montserrat;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+
+  .car-lock-wrapper {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+
+    .line-bg {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 100%;
+      border: 1px solid #fff;
+      clip-path: polygon(
+        50% -3%,
+        80% 8%,
+        100% 32%,
+        100% 89%,
+        75% 92%,
+        49% 74%,
+        22% 96%,
+        0% 71%,
+        0% 29%,
+        10% 6%
+      );
+    }
+
+    .left-pg {
+      position: absolute;
+    }
+
+    .right-pg {
+      position: absolute;
+    }
+
+    .wrapper-progress {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 160px;
+      height: 160px;
+
+      .rotate {
+        transform: rotate(30deg);
+      }
+      .rotateB {
+        transform: rotate(120deg);
+      }
+
+      .progress-ring {
+        position: absolute;
+
+        &__circle {
+          transition: 0.35s stroke-dashoffset;
+          transform: rotate(90deg);
+          transform-origin: 50% 50%;
+          stroke: rgba(116, 56, 245, 1);
+        }
+
+        &__circle-bg {
+          stroke: rgba(255, 255, 255, 0.25);
+        }
+      }
+    }
+
+    .rotateY180 {
+      transform: rotateY(180deg);
+    }
+  }
+}

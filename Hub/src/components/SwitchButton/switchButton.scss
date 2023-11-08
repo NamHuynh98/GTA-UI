@@ -1,0 +1,52 @@
+.switch-button-container {
+  display: flex;
+
+  input[type="checkbox"] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+
+  label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 60px;
+    height: 30px;
+    background: #0000006b;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+  }
+
+  label:after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 25px;
+    height: 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+    border: 1px solid #ffffff;
+    background: radial-gradient(141.65% 110% at 50% 50%, #ffffff76, #ffffff);
+    box-sizing: border-box;
+  }
+
+  input:checked + label:after {
+    border: 1px solid #b71eff;
+    background: radial-gradient(
+      141.65% 110% at 50% 50%,
+      rgba(183, 30, 255, 0.75) 0%,
+      rgba(183, 30, 255, 0.44) 100%
+    );
+  }
+
+  input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+  }
+
+  label:active:after {
+    width: 40px;
+  }
+}

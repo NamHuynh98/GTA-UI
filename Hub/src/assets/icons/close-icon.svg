@@ -1,0 +1,14 @@
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 2121">
+<g id="Group 2122">
+<rect id="Rectangle 15" width="18" height="18" rx="2" fill="url(#paint0_radial_2_4528)"/>
+<path id="Vector 17" d="M13 5L9 9M5 13L9 9M9 9L5 5L13 13" stroke="white"/>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial_2_4528" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(9 9) rotate(43.7811) scale(16.6208)">
+<stop stop-color="#F24747"/>
+<stop offset="1" stop-color="#F24747" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>
