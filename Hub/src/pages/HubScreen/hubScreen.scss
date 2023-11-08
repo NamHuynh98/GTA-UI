@@ -5,11 +5,15 @@
   display: flex;
   justify-content: space-between;
 
+  .mt-30 {
+    margin-top: 30px;
+  }
+
   .left-content {
     height: 100%;
 
     .wrapper-progress-items {
-      margin: auto 0;
+      margin-top: 20px;
       gap: 8px;
     }
   }

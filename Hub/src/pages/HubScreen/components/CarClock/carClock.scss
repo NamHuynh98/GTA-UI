@@ -20,17 +20,19 @@
     svg {
       width: 16px;
       height: 16px;
+      fill: #fff;
     }
   }
 
   .energy {
     position: absolute;
-    bottom: 15px;
-    right: 15px;
+    bottom: 10px;
+    right: 10px;
 
     svg {
       width: 16px;
       height: 16px;
+      fill: #fff;
     }
   }
 
@@ -47,6 +49,11 @@
     svg {
       width: 16px;
       height: 16px;
+      fill: #ffffff69;
+
+      &.active {
+        fill: #fff;
+      }
     }
   }
 

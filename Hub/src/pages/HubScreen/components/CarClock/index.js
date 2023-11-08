@@ -7,7 +7,7 @@ import { ReactComponent as Doors } from "../../../../assets/icons/doors.svg";
 import { ReactComponent as Headlight } from "../../../../assets/icons/headlight.svg";
 import { ReactComponent as SeatBelt } from "../../../../assets/icons/seat-belt.svg";
 import { ReactComponent as Trunk } from "../../../../assets/icons/trunk.svg";
-import { ReactComponent as Engine } from "../../../../assets/icons/engine.svg";
+import { ReactComponent as ClockWarning } from "../../../../assets/icons/clock-warning.svg";
 
 const maxPg = 83;
 
@@ -15,6 +15,15 @@ const CarClock = ({
   leftPercent = 30,
   centerPercent = 60,
   rightPercent = 70,
+  enableDoor = false,
+  enableEnergy = false,
+  enableHeadlight = false,
+  enableSeatBelt = false,
+  enableTrunk = false,
+  enableClockWarning = false,
+  gasValue = 0,
+  speed = 0,
+  numberActive = 1,
 }) => {
   const circle = useRef(null);
   const [circumference, setCircumference] = useState(0);
@@ -39,7 +48,7 @@ const CarClock = ({
     <div className="car-lock-container">
       <div className="gas">
         <Gas />
-        45L
+        {gasValue}L
       </div>
       <div className="energy">
         <Energy />
@@ -47,21 +56,21 @@ const CarClock = ({
 
       <div className="info-race">
         <div className="numbers">
-          <span>1</span>
-          <span className="active">2</span>
-          <span>3</span>
+          <span className={numberActive === 1 ? "active" : ""}>1</span>
+          <span className={numberActive === 2 ? "active" : ""}>2</span>
+          <span className={numberActive === 3 ? "active" : ""}>3</span>
         </div>
-        <div className="km">128</div>
+        <div className="km">{speed}</div>
         <div className="unit">K/M</div>
       </div>
 
       <div className="wrapper-func">
-        <Doors />
-        <Energy />
-        <SeatBelt />
-        <Headlight />
-        <Engine />
-        <Trunk />
+        <Doors className={`${enableDoor ? "active" : ""}`} />
+        <Energy className={`${enableEnergy ? "active" : ""}`} />
+        <Headlight className={`${enableHeadlight ? "active" : ""}`} />
+        <SeatBelt className={`${enableSeatBelt ? "active" : ""}`} />
+        <Trunk className={`${enableTrunk ? "active" : ""}`} />
+        <ClockWarning className={`${enableClockWarning ? "active" : ""}`} />
       </div>
 
       <div className="car-lock-wrapper">

@@ -1,3 +1,5 @@
+import React from "react";
+
 import "./App.scss";
 import HubScreen from "./pages/HubScreen/index";
 import { Toaster } from "react-hot-toast";
