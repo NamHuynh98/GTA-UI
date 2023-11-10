@@ -11,10 +11,12 @@
 
   .left-content {
     height: 100%;
+    position: relative;
 
     .wrapper-progress-items {
-      margin-top: 20px;
+      position: absolute;
       gap: 8px;
+      top: 230px;
     }
   }
 

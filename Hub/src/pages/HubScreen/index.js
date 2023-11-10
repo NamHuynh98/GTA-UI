@@ -33,6 +33,7 @@ const HubScreen = () => {
   const [showSelfBar, setShowSelfBar] = useState(true);
   const [showPlayerBar, setShowPlayerBar] = useState(true);
   const [showHotKeys, setShowHotKeys] = useState(true);
+  const [isDirectionBarVertical, setIsDirectionBarVertical] = useState(true);
 
   // this is demo toast
   useEffect(() => {
@@ -140,7 +141,12 @@ const HubScreen = () => {
             numberActive={2}
             speed={128}
             gasValue={45}
-            enableDoor
+            enableDoor={true}
+            enableClockWarning={false}
+            enableEnergy={false}
+            enableHeadlight={true}
+            enableSeatBelt={false}
+            enableTrunk={false}
           />
         </div>
       </div>
@@ -150,11 +156,15 @@ const HubScreen = () => {
           onChangeChatSetting={(e) => setShowChatBox(e.target.checked)}
           onChangeSelfSetting={(e) => setShowSelfBar(e.target.checked)}
           onChangePlayerSetting={(e) => setShowPlayerBar(e.target.checked)}
+          onChangeDirectionBarSetting={(e) =>
+            setIsDirectionBarVertical(e.target.checked)
+          }
           onChangeHotKeySetting={(e) => setShowHotKeys(e.target.checked)}
           valueDefaultShowChat={showChatBox}
           valueDefaultShowSelf={showSelfBar}
           valueDefaultShowPlayer={showPlayerBar}
           valueDefaultShowHotKey={showHotKeys}
+          valueDefaultDirectionBar={isDirectionBarVertical}
         />
       )}
     </div>

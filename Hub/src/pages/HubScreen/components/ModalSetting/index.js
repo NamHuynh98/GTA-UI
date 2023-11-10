@@ -8,12 +8,14 @@ const ModalSetting = ({
   onCloseModal,
   onChangeChatSetting,
   onChangePlayerSetting,
+  onChangeDirectionBarSetting,
   onChangeSelfSetting,
   onChangeHotKeySetting,
   valueDefaultShowChat,
   valueDefaultShowSelf,
   valueDefaultShowPlayer,
   valueDefaultShowHotKey,
+  valueDefaultDirectionBar,
 }) => {
   return (
     <Modal
@@ -44,6 +46,18 @@ const ModalSetting = ({
                 <SwitchButton
                   onChange={onChangePlayerSetting}
                   defaultValue={valueDefaultShowPlayer}
+                />
+              </div>
+              <div className="item">
+                <div className="wrapper-text">
+                  <div className="title">BAR DIRECTION SETTINGS</div>
+                  <div className="desc">
+                    Thông tin năng lượng được sắp xếp theo chiều ngang/dọc
+                  </div>
+                </div>
+                <SwitchButton
+                  onChange={onChangeDirectionBarSetting}
+                  defaultValue={valueDefaultDirectionBar}
                 />
               </div>
               <div className="item">
