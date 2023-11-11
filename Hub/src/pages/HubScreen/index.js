@@ -54,7 +54,11 @@ const HubScreen = () => {
       <div className="flex flex-col gap-2 left-content">
         {showChatBox && <ChatBox />}
         {showPlayerBar && (
-          <div className="wrapper-progress-items flex flex-col">
+          <div
+            className={`wrapper-progress-items ${
+              isDirectionBarVertical ? "vertical" : "horizontal"
+            }`}
+          >
             <ProgressItem icon={run} percent={58} color="#E8E8E8" />
             <ProgressItem icon={water} percent={58} color="#00FF19" />
             <ProgressItem icon={food} percent={58} color="#00F0FF" />
@@ -123,7 +127,7 @@ const HubScreen = () => {
             </div>
           </>
         )}
-        {showHotKeys && <Keyboards className="mt-30" />}
+        {showHotKeys && <Keyboards className="mt-16" />}
         <div className="flex gap-5 items-end  mt-auto">
           <div className="location">
             <div className="label">

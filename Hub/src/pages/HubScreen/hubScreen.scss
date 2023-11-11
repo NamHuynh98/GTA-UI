@@ -5,8 +5,8 @@
   display: flex;
   justify-content: space-between;
 
-  .mt-30 {
-    margin-top: 30px;
+  .mt-16 {
+    margin-top: 16px;
   }
 
   .left-content {
@@ -15,8 +15,18 @@
 
     .wrapper-progress-items {
       position: absolute;
+      display: flex;
       gap: 8px;
-      top: 230px;
+
+      &.vertical {
+        top: 230px;
+        flex-direction: column;
+      }
+
+      &.horizontal {
+        bottom: 0px;
+        flex-direction: row;
+      }
     }
   }
 
