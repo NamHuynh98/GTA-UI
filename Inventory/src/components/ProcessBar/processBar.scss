@@ -1,0 +1,24 @@
+.process-bar-container {
+  position: relative;
+  height: 6px;
+  transition: all 0.5s;
+  display: flex;
+  flex-grow: 1;
+
+  .process-bar-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    filter: opacity(0.2);
+    width: 100%;
+  }
+
+  .process-percent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1;
+  }
+}

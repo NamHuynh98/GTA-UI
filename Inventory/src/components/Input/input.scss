@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
+
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.5s;
+    width: 100%;
+    height: 56px;
+
+    &.input-error {
+      border: 1px solid #ff453a;
+
+      svg {
+        fill: #ff453a;
+      }
+    }
+
+    input {
+      color: #ced4da;
+      font-size: 18px;
+      font-style: normal;
+      font-family: "Manrope";
+      font-weight: 400;
+      line-height: 24px;
+      background-color: transparent;
+      border: 0;
+      outline: none;
+      display: flex;
+      width: 100%;
+
+      &::placeholder {
+        color: #6c757d;
+      }
+    }
+
+    button {
+      border: 0;
+      outline: none;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    svg {
+      display: flex;
+      width: 24px;
+      height: 24px;
+      justify-content: center;
+      align-items: center;
+      fill: #ffd503;
+      transition: all 0.5s;
+    }
+  }
+
+  .err-msg {
+    color: #ff453a;
+    font-family: "Manrope";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.12px;
+  }
+}

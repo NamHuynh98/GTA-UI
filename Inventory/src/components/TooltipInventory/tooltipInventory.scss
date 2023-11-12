@@ -1,0 +1,161 @@
+.tooltip-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(33, 41, 35, 0.9);
+  visibility: hidden;
+  z-index: -200;
+
+  &.show {
+    visibility: inherit;
+    z-index: 5;
+  }
+
+  .label-menu {
+    color: #adb5bd;
+    font-family: Manrope;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    > .line-before {
+      height: 1px;
+      display: flex;
+      flex-grow: 1;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+  }
+
+  .header-tooltip {
+    display: flex;
+    width: 100%;
+    margin-bottom: 12px;
+    align-items: center;
+
+    .thumbnail {
+      width: 56px;
+      height: 56px;
+      padding: 4px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      margin-right: 8px;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
+      flex-grow: 1;
+
+      .title {
+        color: #e9ecef;
+        font-family: Manrope;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 28px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .sub-title {
+        color: #e9ecef;
+        font-family: Manrope;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &.level_4 {
+          color: rgb(111, 215, 247);
+        }
+
+        &.level_3 {
+          color: rgba(254, 172, 56, 1);
+        }
+
+        &.level_2 {
+          color: rgba(165, 186, 191, 1);
+        }
+
+        &.level_1 {
+          color: rgba(192, 77, 85, 1);
+        }
+      }
+    }
+
+    .icon-medal {
+      margin-left: 2px;
+    }
+  }
+
+  .detail {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .line {
+      display: flex;
+      gap: 4px;
+
+      span {
+        color: #ced4da;
+        font-family: Manrope;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+
+        &:last-child {
+          color: #adb5bd;
+          font-family: Manrope;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 24px;
+        }
+
+        &.strong {
+          color: rgba(67, 168, 86, 1);
+        }
+
+        &.normal {
+          color: rgba(255, 213, 3, 1);
+        }
+
+        &.weak {
+          color: rgba(255, 69, 58, 1);
+        }
+      }
+    }
+  }
+
+  .description {
+    width: 100%;
+    color: #ced4da;
+    font-family: Manrope;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+  }
+}

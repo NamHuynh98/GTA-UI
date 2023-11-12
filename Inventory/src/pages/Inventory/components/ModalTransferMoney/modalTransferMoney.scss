@@ -1,0 +1,150 @@
+.modal-transfer-money-container {
+  width: 561px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(52, 52, 52, 0.9);
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+
+  .title-modal {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+
+    span {
+      color: #e9ecef;
+      font-family: Manrope;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 32px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .money-text {
+    color: #adb5bd;
+    font-family: Manrope;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    margin-bottom: 24px;
+
+    span {
+      color: #ffd503;
+      font-family: Manrope;
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 62px;
+    }
+  }
+
+  > .hr-bar {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8px;
+
+    .label {
+      color: #ced4da;
+      font-family: Manrope;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 18px;
+    }
+
+    .hr-line {
+      height: 1px;
+      display: flex;
+      flex-grow: 1;
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  .wrapper-peoples {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    overflow: auto;
+    max-height: 300px;
+
+    .people-item {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      img {
+        width: 64px;
+        height: 64px;
+      }
+      .wrapper-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        flex-grow: 1;
+        margin-left: 12px;
+        margin-right: 17px;
+
+        .name {
+          color: #ced4da;
+          font-family: Manrope;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 24px;
+        }
+        .id-phone {
+          color: #ced4da;
+          font-family: Manrope;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px;
+        }
+      }
+
+      button {
+        outline: none;
+        border: 0;
+        background: rgba(255, 213, 3, 0.15);
+        color: #ffd503;
+        font-family: Manrope;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 6px 18px;
+        cursor: pointer;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        &.selected {
+          border: 1px solid rgba(255, 213, 3, 0.15);
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    margin-top: 40px;
+
+    button {
+      width: calc(50% - 12px);
+    }
+  }
+}
