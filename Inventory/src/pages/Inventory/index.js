@@ -181,7 +181,7 @@ const Inventory = () => {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="wrapper-block w-30vw">
+          <div className="wrapper-block w-31vw">
             <div className="header">
               <div className="wrapper-right">
                 <div className="title-content">YOUR ITEMS</div>
@@ -221,7 +221,7 @@ const Inventory = () => {
             </div>
           </div>
         </div>
-        <div className="wrapper-block w-30vw">
+        <div className="wrapper-block w-31vw">
           <div className="header">
             <div className="wrapper-right">
               <div className="title-content">TRUNK</div>

@@ -1,5 +1,5 @@
 .inventory-container {
-  padding: 2rem 3rem;
+  padding: 2rem 4rem;
   height: 100%;
   width: 100%;
   margin: auto;
@@ -9,8 +9,8 @@
     rgba(14, 14, 19, 0.97) 100%
   );
 
-  .w-30vw {
-    width: 30vw;
+  .w-31vw {
+    width: 31vw;
     max-width: 550px;
   }
 
@@ -104,31 +104,45 @@
         .label {
           color: #fff;
           font-family: Gilroy;
-          font-size: 12px;
+          font-size: 0.72vw;
           font-style: normal;
           font-weight: 600;
           line-height: normal;
           letter-spacing: 0.54px;
+
+          @media screen and (min-width: 1600px) {
+            font-size: 12px;
+          }
         }
         .weight {
           color: #fff;
           text-align: right;
           font-family: Gilroy;
-          font-size: 12px;
+          font-size: 0.72vw;
           font-style: normal;
           font-weight: 300;
           line-height: normal;
           letter-spacing: 0.54px;
+
+          @media screen and (min-width: 1600px) {
+            font-size: 12px;
+          }
         }
 
         .progress-bar-container {
           display: flex;
-          gap: 5px;
           align-items: center;
+          gap: 0.3vw;
+
+          @media screen and (min-width: 1600px) {
+            gap: 5px;
+          }
 
           .progress-item {
-            width: 10px;
-            height: 20px;
+            width: 0.5vw;
+            height: 1vw;
+            max-width: 10px;
+            max-height: 20px;
             border-radius: 5px;
             border: 1px solid #ffffff29;
             background: radial-gradient(

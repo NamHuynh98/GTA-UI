@@ -34,7 +34,7 @@ export const listItemUsed = {
 export const ItemsOnBag = {
   1: {
     id: generalId(),
-    name: "Súng Ngắn",
+    name: "Súng Ngắn acb cbcb",
     image: gun,
     weight: 1,
     level: 1,
