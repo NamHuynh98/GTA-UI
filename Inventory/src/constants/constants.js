@@ -48,7 +48,7 @@ export const ItemsOnBag = {
     id: generalId(),
     name: "Áo Giáp",
     image: armor,
-    weight: 1,
+    weight: 100,
     level: 2,
     type: "armor",
     quantity: 1,

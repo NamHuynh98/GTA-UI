@@ -118,7 +118,7 @@ const Inventory = () => {
   return (
     <div className="inventory-container">
       <div className="title-header">INVENTORY</div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-start justify-between gap-5">
         <div className="clothing-accessories wrapper-block">
           <div className="header">
             <div className="wrapper-right">
@@ -131,18 +131,42 @@ const Inventory = () => {
           </div>
           <div className="clothing-accessories_content">
             <Player className="player-shadow" />
-            <div className="vertical-slot flex flex-col">
-              {renderSlotPlayer(
-                TYPE_SLOT.BRACELET,
-                listItemUsed[TYPE_SLOT.BRACELET]
-              )}
-              {renderSlotPlayer(TYPE_SLOT.RING, listItemUsed[TYPE_SLOT.RING])}
-              {renderSlotPlayer(TYPE_SLOT.MARK, listItemUsed[TYPE_SLOT.MARK])}
-              {renderSlotPlayer(TYPE_SLOT.SHIRT, listItemUsed[TYPE_SLOT.SHIRT])}
-              {renderSlotPlayer(
-                TYPE_SLOT.EARRING,
-                listItemUsed[TYPE_SLOT.EARRING]
-              )}
+            <div className="flex items-center">
+              <div className="vertical-slot flex flex-col">
+                {renderSlotPlayer(
+                  TYPE_SLOT.BRACELET,
+                  listItemUsed[TYPE_SLOT.BRACELET]
+                )}
+                {renderSlotPlayer(TYPE_SLOT.RING, listItemUsed[TYPE_SLOT.RING])}
+                {renderSlotPlayer(TYPE_SLOT.MARK, listItemUsed[TYPE_SLOT.MARK])}
+                {renderSlotPlayer(
+                  TYPE_SLOT.SHIRT,
+                  listItemUsed[TYPE_SLOT.SHIRT]
+                )}
+                {renderSlotPlayer(
+                  TYPE_SLOT.EARRING,
+                  listItemUsed[TYPE_SLOT.EARRING]
+                )}
+              </div>
+              <div className="vertical-slot flex flex-col ml-auto">
+                {renderSlotPlayer(TYPE_SLOT.CAP, listItemUsed[TYPE_SLOT.CAP])}
+                {renderSlotPlayer(
+                  TYPE_SLOT.WATCH,
+                  listItemUsed[TYPE_SLOT.WATCH]
+                )}
+                {renderSlotPlayer(
+                  TYPE_SLOT.GLOVE,
+                  listItemUsed[TYPE_SLOT.GLOVE]
+                )}
+                {renderSlotPlayer(
+                  TYPE_SLOT.BACKPACK,
+                  listItemUsed[TYPE_SLOT.BACKPACK]
+                )}
+                {renderSlotPlayer(
+                  TYPE_SLOT.TROUSER,
+                  listItemUsed[TYPE_SLOT.TROUSER]
+                )}
+              </div>
             </div>
             <div className="horizontal-slot flex flex">
               {renderSlotPlayer(TYPE_SLOT.ARMOR, listItemUsed[TYPE_SLOT.ARMOR])}
@@ -154,23 +178,10 @@ const Inventory = () => {
               )}
               {renderSlotPlayer(TYPE_SLOT.SHOE, listItemUsed[TYPE_SLOT.SHOE])}
             </div>
-            <div className="vertical-slot flex flex-col">
-              {renderSlotPlayer(TYPE_SLOT.CAP, listItemUsed[TYPE_SLOT.CAP])}
-              {renderSlotPlayer(TYPE_SLOT.WATCH, listItemUsed[TYPE_SLOT.WATCH])}
-              {renderSlotPlayer(TYPE_SLOT.GLOVE, listItemUsed[TYPE_SLOT.GLOVE])}
-              {renderSlotPlayer(
-                TYPE_SLOT.BACKPACK,
-                listItemUsed[TYPE_SLOT.BACKPACK]
-              )}
-              {renderSlotPlayer(
-                TYPE_SLOT.TROUSER,
-                listItemUsed[TYPE_SLOT.TROUSER]
-              )}
-            </div>
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="wrapper-block">
+          <div className="wrapper-block w-30vw">
             <div className="header">
               <div className="wrapper-right">
                 <div className="title-content">YOUR ITEMS</div>
@@ -187,8 +198,8 @@ const Inventory = () => {
                 {displayProgressBar((32 / 128) * 100)}
               </div>
             </div>
-            <div className="list-product-content">
-              {Array.from({ length: 20 }).map((_, i) => (
+            <div className="list-product-content m-h-49vh">
+              {Array.from({ length: 30 }).map((_, i) => (
                 <ItemProduct dataProduct={ItemsOnBag[i]} key={i} />
               ))}
             </div>
@@ -204,13 +215,13 @@ const Inventory = () => {
               </div>
             </div>
             <div className="list-product-content">
-              {Array.from({ length: 4 }).map((_, i) => (
+              {Array.from({ length: 5 }).map((_, i) => (
                 <ItemProduct dataProduct={ItemsOnSlots[i]} key={i} />
               ))}
             </div>
           </div>
         </div>
-        <div className="wrapper-block">
+        <div className="wrapper-block w-30vw">
           <div className="header">
             <div className="wrapper-right">
               <div className="title-content">TRUNK</div>
@@ -227,7 +238,7 @@ const Inventory = () => {
               {displayProgressBar((32 / 128) * 100)}
             </div>
           </div>
-          <div className="list-product-content">
+          <div className="list-product-content m-h-70vh">
             {Array.from({ length: 30 }).map((_, i) => (
               <ItemProduct dataProduct={ItemsOutSide[i]} key={i} />
             ))}
