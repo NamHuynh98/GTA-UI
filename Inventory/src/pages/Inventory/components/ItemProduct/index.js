@@ -29,7 +29,9 @@ const ItemProduct = ({
     <>
       {isItemUsed ? (
         <div
-          className={`item-product-container_used ${isActive && "active"}`}
+          className={`item-product-container_used ${isActive && "active"} ${
+            dataProduct && `level-${dataProduct.level}`
+          }`}
           onClick={onClick}
         >
           {dataProduct ? <img src={dataProduct.image} alt="item" /> : iconHint}

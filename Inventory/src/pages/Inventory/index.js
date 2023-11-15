@@ -228,18 +228,12 @@ const Inventory = () => {
         }}
         imgItem={data ? data.image : null}
       >
-        {/* <div
-          className={`slot ${
-            selectWear && type === selectWear.type && "active"
-          }`}
-        > */}
         <ItemProduct
           dataProduct={data}
           iconHint={iconHint}
           isItemUsed
           isActive={selectWear && type === selectWear.type}
         />
-        {/* </div> */}
       </ItemDnDCustom>
     );
   };

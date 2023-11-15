@@ -60,6 +60,21 @@
     &.active {
       box-shadow: 0 0 10px #b71effb5;
     }
+
+    &.level {
+      &-1 {
+        border-color: #ffffff80;
+      }
+      &-2 {
+        border-color: #0500ff80;
+      }
+      &-3 {
+        border-color: #fff50080;
+      }
+      &-4 {
+        border-color: #f0000080;
+      }
+    }
   }
 
   &:hover {

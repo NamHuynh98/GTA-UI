@@ -10,7 +10,7 @@ export const listItemUsed = {
     name: "Súng Ngắn",
     image: gun,
     weight: 1,
-    level: 1,
+    level: 3,
     type: "weapon",
     quantity: 1,
     description: `Lorem ipsum dolor sit amet consectetur. Facilisis duis amet lorem
@@ -23,7 +23,7 @@ export const listItemUsed = {
     image: armor,
     weight: 1,
     type: "armor",
-    level: 2,
+    level: 4,
     quantity: 1,
     description: `Lorem ipsum dolor sit amet consectetur. Facilisis duis amet lorem
                   cras augue tristique. Risus quis ac dignissim felis. Viverra
