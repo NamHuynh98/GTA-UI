@@ -21,29 +21,30 @@ export const ItemDnDCustom = ({
       img.src = imgItem;
       img.id = "img-placeholder";
       img.style.position = "fixed";
-      img.style.width = "70px";
-      img.style.height = "70px";
+      img.style.width = "50px";
+      img.style.height = "50px";
+      img.style.objectFit = "scale-down";
       document.body.appendChild(img);
       onDragItem();
     }
   };
 
-  const onMouseOver = (event) => {
-    if (isMouseDown) {
-      event.target.classList.add("hover-item");
-    }
-  };
+  // const onMouseOver = (event) => {
+  //   if (isMouseDown) {
+  //     event.target.classList.add("hover-item");
+  //   }
+  // };
 
-  const onMouseLeave = (event) => {
-    if (isMouseDown) {
-      event.target.classList.remove("hover-item");
-    }
-  };
+  // const onMouseLeave = (event) => {
+  //   if (isMouseDown) {
+  //     event.target.classList.remove("hover-item");
+  //   }
+  // };
 
   const onMouseUp = (event) => {
     if (isMouseDown) {
       allowDrop && onDropItem(index);
-      event.target.classList.remove("hover-item");
+      // event.target.classList.remove("hover-item");
       const nodes = document.querySelectorAll("#item-drag-id");
       nodes.forEach((node) => node.classList.remove("hidden-item"));
     }
@@ -53,8 +54,8 @@ export const ItemDnDCustom = ({
     <div
       draggable={false}
       onMouseDown={onMouseDown}
-      onMouseOver={onMouseOver}
-      onMouseLeave={onMouseLeave}
+      // onMouseOver={onMouseOver}
+      // onMouseLeave={onMouseLeave}
       onMouseUp={onMouseUp}
     >
       {children}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Inventory.scss";
 import { ReactComponent as Armor } from "../../assets/icons/armor.svg";
 import { ReactComponent as Backpack } from "../../assets/icons/backpack.svg";
@@ -17,11 +17,23 @@ import { ReactComponent as Watch } from "../../assets/icons/watch.svg";
 import { ReactComponent as Weapons } from "../../assets/icons/weapons.svg";
 import { ReactComponent as Wing } from "../../assets/icons/wing.svg";
 import ItemProduct from "./components/ItemProduct";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectItemsUsed,
+  selectItemsOnBag,
+  selectItemsOnSlots,
+  selectItemsOutSide,
+  setDataInit,
+  TYPE_GROUP,
+  updatePosition,
+} from "../../features/inventory/inventorySlice";
+import { ItemDnDCustom } from "./components/ItemDndCustom/index";
+
 import {
   listItemUsed,
   ItemsOnBag,
-  ItemsOutSide,
   ItemsOnSlots,
+  ItemsOutSide,
 } from "../../constants/constants";
 
 const TYPE_SLOT = {
@@ -43,6 +55,107 @@ const TYPE_SLOT = {
 };
 
 const Inventory = () => {
+  const dataItemsUsed = useSelector(selectItemsUsed);
+  const dataItemsOnBag = useSelector(selectItemsOnBag);
+  const dataItemsOnSlots = useSelector(selectItemsOnSlots);
+  const dataItemsOutSide = useSelector(selectItemsOutSide);
+
+  const [itemDrag, setItemDrag] = useState(null);
+  const [isMouseDown, setIsMouseDown] = useState(false);
+  const [selectWear, setSelectWear] = useState(null);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // on fetch and update data to store
+    console.log("On fetch and update data to store");
+    dispatch(
+      setDataInit({
+        itemUsed: listItemUsed,
+        itemsOnBag: ItemsOnBag,
+        itemsOnSlots: ItemsOnSlots,
+        itemsOutSide: ItemsOutSide,
+      })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onMouseMove = (ev) => {
+    if (isMouseDown) {
+      const img = document.getElementById("img-placeholder");
+      img.style.left = `${ev.clientX + 10}px`;
+      img.style.top = `${ev.clientY + 10}px`;
+    }
+  };
+
+  const cleanDataMove = () => {
+    setIsMouseDown(false);
+    const foundElm = document.body.querySelectorAll("#img-placeholder");
+    foundElm.forEach((node) => document.body.removeChild(node));
+    const nodes = document.querySelectorAll("#item-drag-id");
+    nodes.forEach((node) => node.classList.remove("hidden-item"));
+    setSelectWear(null);
+    setItemDrag(null);
+  };
+
+  useEffect(() => {
+    document.addEventListener("mouseup", () => cleanDataMove());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onDropData = (dropIndex, side) => {
+    if (side === TYPE_GROUP.ON_BAG) {
+      dispatch(
+        updatePosition({
+          itemDrag,
+          itemDrop: {
+            index: dropIndex,
+            side,
+            item: dataItemsOnBag[dropIndex],
+          },
+        })
+      );
+    }
+    if (side === TYPE_GROUP.USED) {
+      dispatch(
+        updatePosition({
+          itemDrag,
+          itemDrop: {
+            index: dropIndex,
+            side,
+            item: dataItemsUsed[dropIndex],
+          },
+        })
+      );
+    }
+    if (side === TYPE_GROUP.OUTSIDE) {
+      dispatch(
+        updatePosition({
+          itemDrag,
+          itemDrop: {
+            index: dropIndex,
+            side,
+            item: dataItemsOutSide[dropIndex],
+          },
+        })
+      );
+    }
+    if (side === TYPE_GROUP.ON_SLOT) {
+      dispatch(
+        updatePosition({
+          itemDrag,
+          itemDrop: {
+            index: dropIndex,
+            side,
+            item: dataItemsOnSlots[dropIndex],
+          },
+        })
+      );
+    }
+    setSelectWear(null);
+    setItemDrag(null);
+  };
+
   const renderSlotPlayer = (type, data) => {
     let iconHint = null;
     switch (type) {
@@ -95,9 +208,39 @@ const Inventory = () => {
         break;
     }
     return (
-      <div className="slot">
-        {data ? <img src={data.image} alt="item" /> : iconHint}
-      </div>
+      <ItemDnDCustom
+        key={`${TYPE_GROUP.USED}_${type}`}
+        index={type}
+        setIsMouseDown={setIsMouseDown}
+        isMouseDown={isMouseDown}
+        allowDrag={!!data}
+        allowDrop={!!selectWear && type === selectWear.type}
+        onDragItem={() => {
+          setItemDrag({
+            item: data,
+            index: type,
+            side: TYPE_GROUP.USED,
+          });
+          setSelectWear(data);
+        }}
+        onDropItem={(dropIndex) => {
+          onDropData(dropIndex, TYPE_GROUP.USED);
+        }}
+        imgItem={data ? data.image : null}
+      >
+        {/* <div
+          className={`slot ${
+            selectWear && type === selectWear.type && "active"
+          }`}
+        > */}
+        <ItemProduct
+          dataProduct={data}
+          iconHint={iconHint}
+          isItemUsed
+          isActive={selectWear && type === selectWear.type}
+        />
+        {/* </div> */}
+      </ItemDnDCustom>
     );
   };
 
@@ -116,7 +259,11 @@ const Inventory = () => {
   };
 
   return (
-    <div className="inventory-container">
+    <div
+      className="inventory-container"
+      onMouseMove={onMouseMove}
+      onMouseLeave={cleanDataMove}
+    >
       <div className="title-header">INVENTORY</div>
       <div className="flex items-start justify-between gap-5">
         <div className="clothing-accessories wrapper-block">
@@ -135,48 +282,69 @@ const Inventory = () => {
               <div className="vertical-slot flex flex-col">
                 {renderSlotPlayer(
                   TYPE_SLOT.BRACELET,
-                  listItemUsed[TYPE_SLOT.BRACELET]
+                  dataItemsUsed && dataItemsUsed[TYPE_SLOT.BRACELET]
                 )}
-                {renderSlotPlayer(TYPE_SLOT.RING, listItemUsed[TYPE_SLOT.RING])}
-                {renderSlotPlayer(TYPE_SLOT.MARK, listItemUsed[TYPE_SLOT.MARK])}
+                {renderSlotPlayer(
+                  TYPE_SLOT.RING,
+                  dataItemsUsed && dataItemsUsed[TYPE_SLOT.RING]
+                )}
+                {renderSlotPlayer(
+                  TYPE_SLOT.MARK,
+                  dataItemsUsed && dataItemsUsed[TYPE_SLOT.MARK]
+                )}
                 {renderSlotPlayer(
                   TYPE_SLOT.SHIRT,
-                  listItemUsed[TYPE_SLOT.SHIRT]
+                  dataItemsUsed && dataItemsUsed[TYPE_SLOT.SHIRT]
                 )}
                 {renderSlotPlayer(
                   TYPE_SLOT.EARRING,
-                  listItemUsed[TYPE_SLOT.EARRING]
+                  dataItemsUsed && dataItemsUsed[TYPE_SLOT.EARRING]
                 )}
               </div>
               <div className="vertical-slot flex flex-col ml-auto">
-                {renderSlotPlayer(TYPE_SLOT.CAP, listItemUsed[TYPE_SLOT.CAP])}
+                {renderSlotPlayer(
+                  TYPE_SLOT.CAP,
+                  dataItemsUsed && dataItemsUsed[TYPE_SLOT.CAP]
+                )}
                 {renderSlotPlayer(
                   TYPE_SLOT.WATCH,
-                  listItemUsed[TYPE_SLOT.WATCH]
+                  dataItemsUsed && dataItemsUsed[TYPE_SLOT.WATCH]
                 )}
                 {renderSlotPlayer(
                   TYPE_SLOT.GLOVE,
-                  listItemUsed[TYPE_SLOT.GLOVE]
+                  dataItemsUsed && dataItemsUsed[TYPE_SLOT.GLOVE]
                 )}
                 {renderSlotPlayer(
                   TYPE_SLOT.BACKPACK,
-                  listItemUsed[TYPE_SLOT.BACKPACK]
+                  dataItemsUsed && dataItemsUsed[TYPE_SLOT.BACKPACK]
                 )}
                 {renderSlotPlayer(
                   TYPE_SLOT.TROUSER,
-                  listItemUsed[TYPE_SLOT.TROUSER]
+                  dataItemsUsed && dataItemsUsed[TYPE_SLOT.TROUSER]
                 )}
               </div>
             </div>
             <div className="horizontal-slot flex flex">
-              {renderSlotPlayer(TYPE_SLOT.ARMOR, listItemUsed[TYPE_SLOT.ARMOR])}
-              {renderSlotPlayer(TYPE_SLOT.WING, listItemUsed[TYPE_SLOT.WING])}
-              {renderSlotPlayer(TYPE_SLOT.PET, listItemUsed[TYPE_SLOT.PET])}
               {renderSlotPlayer(
-                TYPE_SLOT.WEAPONS,
-                listItemUsed[TYPE_SLOT.WEAPON]
+                TYPE_SLOT.ARMOR,
+                dataItemsUsed && dataItemsUsed[TYPE_SLOT.ARMOR]
               )}
-              {renderSlotPlayer(TYPE_SLOT.SHOE, listItemUsed[TYPE_SLOT.SHOE])}
+              {renderSlotPlayer(
+                TYPE_SLOT.WING,
+                dataItemsUsed && dataItemsUsed[TYPE_SLOT.WING]
+              )}
+              {renderSlotPlayer(
+                TYPE_SLOT.PET,
+                dataItemsUsed && dataItemsUsed[TYPE_SLOT.PET]
+              )}
+              {renderSlotPlayer(
+                TYPE_SLOT.WEAPON,
+                dataItemsUsed && dataItemsUsed[TYPE_SLOT.WEAPON]
+              )}
+              {renderSlotPlayer(
+                TYPE_SLOT.SHOE,
+                dataItemsUsed && dataItemsUsed[TYPE_SLOT.SHOE]
+              )}
             </div>
           </div>
         </div>
@@ -200,7 +368,43 @@ const Inventory = () => {
             </div>
             <div className="list-product-content m-h-49vh">
               {Array.from({ length: 30 }).map((_, i) => (
-                <ItemProduct dataProduct={ItemsOnBag[i]} key={i} />
+                <ItemDnDCustom
+                  key={`${TYPE_GROUP.ON_BAG}_${i}`}
+                  index={i + 1}
+                  setIsMouseDown={setIsMouseDown}
+                  isMouseDown={isMouseDown}
+                  allowDrag={dataItemsOnBag && !!dataItemsOnBag[i + 1]}
+                  allowDrop={
+                    !(
+                      itemDrag &&
+                      itemDrag.side === TYPE_GROUP.USED &&
+                      dataItemsOnBag &&
+                      !!dataItemsOnBag[i + 1] &&
+                      itemDrag.item.type !== dataItemsOnBag[i + 1].type
+                    )
+                  }
+                  onDragItem={() => {
+                    setItemDrag({
+                      item: dataItemsOnBag[i + 1],
+                      index: i + 1,
+                      side: TYPE_GROUP.ON_BAG,
+                    });
+                    setSelectWear(dataItemsOnBag[i + 1]);
+                  }}
+                  onDropItem={(dropIndex) => {
+                    onDropData(dropIndex, TYPE_GROUP.ON_BAG);
+                  }}
+                  imgItem={
+                    dataItemsOnBag && dataItemsOnBag[i + 1]
+                      ? dataItemsOnBag[i + 1].image
+                      : null
+                  }
+                >
+                  <ItemProduct
+                    dataProduct={dataItemsOnBag && dataItemsOnBag[i + 1]}
+                    key={i}
+                  />
+                </ItemDnDCustom>
               ))}
             </div>
           </div>
@@ -216,7 +420,34 @@ const Inventory = () => {
             </div>
             <div className="list-product-content">
               {Array.from({ length: 5 }).map((_, i) => (
-                <ItemProduct dataProduct={ItemsOnSlots[i]} key={i} />
+                <ItemDnDCustom
+                  key={`${TYPE_GROUP.ON_SLOT}_${i}`}
+                  index={i + 1}
+                  setIsMouseDown={setIsMouseDown}
+                  isMouseDown={isMouseDown}
+                  allowDrag={dataItemsOnSlots && !!dataItemsOnSlots[i + 1]}
+                  onDragItem={() => {
+                    setItemDrag({
+                      item: dataItemsOnSlots[i + 1],
+                      index: i + 1,
+                      side: TYPE_GROUP.ON_SLOT,
+                    });
+                    setSelectWear(dataItemsOnSlots[i + 1]);
+                  }}
+                  onDropItem={(dropIndex) => {
+                    onDropData(dropIndex, TYPE_GROUP.ON_SLOT);
+                  }}
+                  imgItem={
+                    dataItemsOnSlots && dataItemsOnSlots[i + 1]
+                      ? dataItemsOnSlots[i + 1].image
+                      : null
+                  }
+                >
+                  <ItemProduct
+                    dataProduct={dataItemsOnSlots && dataItemsOnSlots[i + 1]}
+                    key={i}
+                  />
+                </ItemDnDCustom>
               ))}
             </div>
           </div>
@@ -240,7 +471,34 @@ const Inventory = () => {
           </div>
           <div className="list-product-content m-h-70vh">
             {Array.from({ length: 30 }).map((_, i) => (
-              <ItemProduct dataProduct={ItemsOutSide[i]} key={i} />
+              <ItemDnDCustom
+                key={`${TYPE_GROUP.OUTSIDE}_${i}`}
+                index={i + 1}
+                setIsMouseDown={setIsMouseDown}
+                isMouseDown={isMouseDown}
+                allowDrag={dataItemsOutSide && !!dataItemsOutSide[i + 1]}
+                onDragItem={() => {
+                  setItemDrag({
+                    item: dataItemsOutSide[i + 1],
+                    index: i + 1,
+                    side: TYPE_GROUP.OUTSIDE,
+                  });
+                  setSelectWear(dataItemsOutSide[i + 1]);
+                }}
+                onDropItem={(dropIndex) => {
+                  onDropData(dropIndex, TYPE_GROUP.OUTSIDE);
+                }}
+                imgItem={
+                  dataItemsOutSide && dataItemsOutSide[i + 1]
+                    ? dataItemsOutSide[i + 1].image
+                    : null
+                }
+              >
+                <ItemProduct
+                  dataProduct={dataItemsOutSide && dataItemsOutSide[i + 1]}
+                  key={i}
+                />
+              </ItemDnDCustom>
             ))}
           </div>
         </div>
