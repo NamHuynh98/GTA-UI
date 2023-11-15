@@ -46,8 +46,8 @@ const TooltipInventory = ({
         </div>
       </div>
       <div className="actions">
-        <button onClick={onSplit}>Split</button>
         <button onClick={onUse}>Use</button>
+        <button onClick={onSplit}>Split</button>
         <button onClick={onDrop}>Drop</button>
       </div>
     </div>

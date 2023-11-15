@@ -156,6 +156,15 @@ const Inventory = () => {
     setItemDrag(null);
   };
 
+  const onUseItem = (itemDrag, itemDrop) => {
+    dispatch(
+      updatePosition({
+        itemDrag,
+        itemDrop,
+      })
+    );
+  };
+
   const renderSlotPlayer = (type, data) => {
     let iconHint = null;
     switch (type) {
@@ -395,6 +404,20 @@ const Inventory = () => {
                   }
                 >
                   <ItemProduct
+                    onUse={() =>
+                      onUseItem(
+                        {
+                          item: dataItemsOnBag[i + 1],
+                          index: i + 1,
+                          side: TYPE_GROUP.ON_BAG,
+                        },
+                        {
+                          index: dataItemsOnBag[i + 1].type,
+                          item: dataItemsUsed[dataItemsOnBag[i + 1].type],
+                          side: TYPE_GROUP.USED,
+                        }
+                      )
+                    }
                     dataProduct={dataItemsOnBag && dataItemsOnBag[i + 1]}
                     key={i}
                   />
@@ -439,6 +462,20 @@ const Inventory = () => {
                 >
                   <ItemProduct
                     dataProduct={dataItemsOnSlots && dataItemsOnSlots[i + 1]}
+                    onUse={() =>
+                      onUseItem(
+                        {
+                          item: dataItemsOnSlots[i + 1],
+                          index: i + 1,
+                          side: TYPE_GROUP.ON_SLOT,
+                        },
+                        {
+                          index: dataItemsOnSlots[i + 1].type,
+                          item: dataItemsUsed[dataItemsOnSlots[i + 1].type],
+                          side: TYPE_GROUP.USED,
+                        }
+                      )
+                    }
                     key={i}
                   />
                 </ItemDnDCustom>
@@ -490,6 +527,20 @@ const Inventory = () => {
               >
                 <ItemProduct
                   dataProduct={dataItemsOutSide && dataItemsOutSide[i + 1]}
+                  onUse={() =>
+                    onUseItem(
+                      {
+                        item: dataItemsOutSide[i + 1],
+                        index: i + 1,
+                        side: TYPE_GROUP.OUTSIDE,
+                      },
+                      {
+                        index: dataItemsOutSide[i + 1].type,
+                        item: dataItemsUsed[dataItemsOutSide[i + 1].type],
+                        side: TYPE_GROUP.USED,
+                      }
+                    )
+                  }
                   key={i}
                 />
               </ItemDnDCustom>

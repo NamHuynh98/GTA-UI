@@ -7,6 +7,9 @@ const ItemProduct = ({
   isItemUsed = false,
   iconHint = null,
   isActive = false,
+  onSplit = () => {},
+  onUse = () => {},
+  onDrop = () => {},
 }) => {
   const [positionTooltip, setPositionTooltip] = useState();
 
@@ -28,16 +31,21 @@ const ItemProduct = ({
   return (
     <>
       {isItemUsed ? (
-        <div
+        <button
           className={`item-product-container_used ${isActive && "active"} ${
             dataProduct && `level-${dataProduct.level}`
           }`}
           onClick={onClick}
+          onDoubleClick={() => onUse()}
         >
           {dataProduct ? <img src={dataProduct.image} alt="item" /> : iconHint}
-        </div>
+        </button>
       ) : (
-        <div className="item-product-container" onClick={onClick}>
+        <button
+          className="item-product-container"
+          onClick={onClick}
+          onDoubleClick={() => onUse()}
+        >
           {dataProduct && (
             <>
               <div className="quantity">{dataProduct.quantity}</div>
@@ -47,10 +55,13 @@ const ItemProduct = ({
               <div className={`level level-${dataProduct.level}`}></div>
             </>
           )}
-        </div>
+        </button>
       )}
       {dataProduct && (
         <TooltipInventory
+          onUse={onUse}
+          onDrop={onDrop}
+          onSplit={onSplit}
           show={positionTooltip}
           setPositionTooltip={setPositionTooltip}
           item={dataProduct}
