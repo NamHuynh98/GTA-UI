@@ -15,7 +15,7 @@ const Modal = ({
       className={`modal ${show ? "display-block" : "display-none"} ${
         className ? className : ""
       }`}
-      onClick={() => isCloseByClickOutside && handleClose}
+      onClick={() => isCloseByClickOutside && handleClose()}
     >
       <section
         className="modal-main"

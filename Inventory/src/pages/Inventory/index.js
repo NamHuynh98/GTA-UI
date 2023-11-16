@@ -28,6 +28,8 @@ import {
   updatePosition,
 } from "../../features/inventory/inventorySlice";
 import { ItemDnDCustom } from "./components/ItemDndCustom/index";
+import ModalSplitItem from "./components/ModalSplitItem/index";
+import ModalGiveItem from "./components/ModalGiveItem/index";
 
 import {
   listItemUsed,
@@ -63,6 +65,8 @@ const Inventory = () => {
   const [itemDrag, setItemDrag] = useState(null);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [selectWear, setSelectWear] = useState(null);
+  const [splitItem, setSplitItem] = useState(null);
+  const [giveItem, setGiveItem] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -242,6 +246,8 @@ const Inventory = () => {
           iconHint={iconHint}
           isItemUsed
           isActive={selectWear && type === selectWear.type}
+          onSplit={() => setSplitItem(data)}
+          onGive={() => setGiveItem(data)}
         />
       </ItemDnDCustom>
     );
@@ -267,6 +273,24 @@ const Inventory = () => {
       onMouseMove={onMouseMove}
       onMouseLeave={cleanDataMove}
     >
+      <ModalSplitItem
+        handleCloseModal={() => setSplitItem(null)}
+        showModal={!!splitItem}
+        dataItem={splitItem}
+        onSplitItem={(value) => {
+          console.log("spit thành " + value + " item");
+          setSplitItem(null);
+        }}
+      />
+      <ModalGiveItem
+        handleCloseModal={() => setGiveItem(null)}
+        showModal={!!giveItem}
+        dataItem={giveItem}
+        onGiveItem={() => {
+          console.log("give item");
+          setGiveItem(null);
+        }}
+      />
       <div className="title-header">INVENTORY</div>
       <div className="flex items-start justify-between gap-5">
         <div className="clothing-accessories wrapper-block">
@@ -418,6 +442,8 @@ const Inventory = () => {
                         }
                       )
                     }
+                    onSplit={() => setSplitItem(dataItemsOnBag[i + 1])}
+                    onGive={() => setGiveItem(dataItemsOnBag[i + 1])}
                     dataProduct={dataItemsOnBag && dataItemsOnBag[i + 1]}
                     key={i}
                   />
@@ -476,6 +502,8 @@ const Inventory = () => {
                         }
                       )
                     }
+                    onGive={() => setGiveItem(dataItemsOnSlots[i + 1])}
+                    onSplit={() => setSplitItem(dataItemsOnSlots[i + 1])}
                     key={i}
                   />
                 </ItemDnDCustom>
@@ -541,6 +569,8 @@ const Inventory = () => {
                       }
                     )
                   }
+                  onSplit={() => setSplitItem(dataItemsOutSide[i + 1])}
+                  onGive={() => setGiveItem(dataItemsOutSide[i + 1])}
                   key={i}
                 />
               </ItemDnDCustom>

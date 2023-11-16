@@ -8,7 +8,7 @@ const TooltipInventory = ({
   setPositionTooltip,
   onSplit = () => {},
   onUse = () => {},
-  onDrop = () => {},
+  onGive = () => {},
 }) => {
   const refPopup = useRef(null);
 
@@ -48,7 +48,7 @@ const TooltipInventory = ({
       <div className="actions">
         <button onClick={onUse}>Use</button>
         <button onClick={onSplit}>Split</button>
-        <button onClick={onDrop}>Drop</button>
+        <button onClick={onGive}>Give</button>
       </div>
     </div>
   );

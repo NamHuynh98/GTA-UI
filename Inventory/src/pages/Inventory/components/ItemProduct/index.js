@@ -9,7 +9,7 @@ const ItemProduct = ({
   isActive = false,
   onSplit = () => {},
   onUse = () => {},
-  onDrop = () => {},
+  onGive = () => {},
 }) => {
   const [positionTooltip, setPositionTooltip] = useState();
 
@@ -60,7 +60,7 @@ const ItemProduct = ({
       {dataProduct && (
         <TooltipInventory
           onUse={onUse}
-          onDrop={onDrop}
+          onGive={onGive}
           onSplit={onSplit}
           show={positionTooltip}
           setPositionTooltip={setPositionTooltip}
