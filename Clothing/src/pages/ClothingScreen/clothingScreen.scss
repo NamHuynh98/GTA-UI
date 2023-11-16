@@ -1,0 +1,171 @@
+.clothing-container {
+  padding: 8px 32px;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(
+    54.31% 50% at 50% 50%,
+    rgba(12, 12, 17, 0.31) 0%,
+    rgba(14, 14, 19, 0.91) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .logo {
+      text-shadow: 0px 4px 41px rgba(255, 255, 255, 0.55);
+      font-family: Montserrat;
+      font-size: 64px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      background: radial-gradient(
+        245.87% 130.93% at 50% 50%,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(246, 246, 246, 0) 100%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .sub-title {
+      color: #fff;
+      font-family: Montserrat;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 149.4%; /* 17.928px */
+      width: 275px;
+    }
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
+
+    .wrapper-left {
+      display: flex;
+      align-items: flex-start;
+
+      .tabs-container {
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 16px;
+        border-radius: 5px;
+        background: radial-gradient(
+          141.41% 100.76% at -25.49% 58.76%,
+          rgba(255, 255, 255, 0.3) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+
+        .tab {
+          position: relative;
+          padding: 10px;
+          border-radius: 5px;
+          background: radial-gradient(
+            86.43% 70.35% at 50.31% 49.8%,
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0) 100%
+          );
+          cursor: pointer;
+          border: 1px solid #ffffff1c;
+
+          .active,
+          &:hover {
+            border-color: #b71eff1c;
+            background: radial-gradient(
+              64.66% 64.66% at 50% 50%,
+              #b71eff 0%,
+              #341542 100%
+            );
+
+            &::after {
+              background: #b71eff;
+              box-shadow: 0px 4px 9px 0px rgba(183, 30, 255, 0.55);
+            }
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            height: calc(100% - 16px);
+            width: 3px;
+            border-radius: 5px;
+            background: #fff;
+            box-shadow: 0px 4px 9px 0px rgba(255, 255, 255, 0.55);
+          }
+          .label {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            color: #fff;
+            text-align: right;
+            font-family: Montserrat;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+          }
+          img {
+            width: 60px;
+            height: 60px;
+            object-fit: scale-down;
+            margin-top: 8px;
+            margin-left: 5px;
+          }
+        }
+      }
+      .content-list-items {
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 16px;
+        border-radius: 5px;
+        background: radial-gradient(
+          141.41% 100.76% at -25.49% 58.76%,
+          rgba(255, 255, 255, 0.3) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        .item {
+          .wrapper-img {
+            img {
+            }
+          }
+          .text-content {
+            .title {
+            }
+            .line-wrapper {
+              .price {
+              }
+              .btn-buy {
+              }
+              .action-change {
+                .btn-next,
+                .btn-prev {
+                  svg {
+                  }
+                }
+                .index {
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .wrapper-right {
+    }
+  }
+}

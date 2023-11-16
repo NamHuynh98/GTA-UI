@@ -1,0 +1,99 @@
+.item-equipment-container {
+  .wrapper-img {
+    img {
+    }
+  }
+  .text-content {
+    .title {
+    }
+    .line-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .price {
+        color: #63ff2c;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        background: radial-gradient(
+          190.83% 96.66% at 50% 50%,
+          rgba(99, 255, 44, 0.15) 0%,
+          rgba(99, 255, 44, 0) 100%
+        );
+        padding: 2px 8px;
+      }
+      .btn-buy {
+        border: 1px solid #b81eff3f;
+        background: radial-gradient(
+          73.96% 73.96% at 50% 50%,
+          rgba(183, 30, 255, 0.55) 0%,
+          rgba(183, 30, 255, 0) 100%
+        );
+        backdrop-filter: blur(18.5px);
+        color: #fff;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding: 2px 16px;
+      }
+      .action-change {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        .btn-next {
+          transform: rotate(180deg);
+        }
+
+        .btn-next,
+        .btn-prev {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 20px;
+          height: 20px;
+          border-radius: 2px;
+          background: radial-gradient(
+            73.96% 73.96% at 50% 50%,
+            rgba(255, 255, 255, 0.3) 0%,
+            rgba(255, 255, 255, 0) 100%
+          );
+          cursor: pointer;
+
+          svg {
+            width: 8px;
+            height: 8px;
+            fill: #fff;
+          }
+
+          &:hover {
+            opacity: 0.6;
+          }
+
+          &.disabled {
+          }
+        }
+        .index {
+          color: #fff;
+          font-family: Montserrat;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          width: 20px;
+          height: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: rgba(255, 255, 255, 0.15);
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+}
