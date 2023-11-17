@@ -62,7 +62,7 @@
         padding: 16px;
         border-radius: 5px;
         background: radial-gradient(
-          141.41% 100.76% at -25.49% 58.76%,
+          124.41% 100.76% at -25.49% 58.76%,
           rgba(255, 255, 255, 0.3) 0%,
           rgba(255, 255, 255, 0) 100%
         );
@@ -79,7 +79,7 @@
           cursor: pointer;
           border: 1px solid #ffffff1c;
 
-          .active,
+          &.active,
           &:hover {
             border-color: #b71eff1c;
             background: radial-gradient(
@@ -134,38 +134,15 @@
         padding: 16px;
         border-radius: 5px;
         background: radial-gradient(
-          141.41% 100.76% at -25.49% 58.76%,
+          123.41% 100.76% at -25.49% 58.76%,
           rgba(255, 255, 255, 0.3) 0%,
           rgba(255, 255, 255, 0) 100%
         );
-        .item {
-          .wrapper-img {
-            img {
-            }
-          }
-          .text-content {
-            .title {
-            }
-            .line-wrapper {
-              .price {
-              }
-              .btn-buy {
-              }
-              .action-change {
-                .btn-next,
-                .btn-prev {
-                  svg {
-                  }
-                }
-                .index {
-                }
-              }
-            }
-          }
-        }
       }
     }
     .wrapper-right {
+      .wrapper-list-item {
+      }
     }
   }
 }

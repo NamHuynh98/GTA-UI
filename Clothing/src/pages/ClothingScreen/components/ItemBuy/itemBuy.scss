@@ -1,0 +1,122 @@
+.item-buy-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #ffffff03;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 70px;
+    height: 100%;
+    background: radial-gradient(
+      127.41% 100.76% at -25.49% 58.76%,
+      rgba(183, 30, 255, 0.55) 0%,
+      rgba(183, 30, 255, 0) 100%
+    );
+    z-index: 1;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 60%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(
+      270deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  .wrapper-img {
+    z-index: 2;
+    padding: 5px;
+
+    img {
+      width: 50px;
+      height: 50px;
+      object-fit: scale-down;
+    }
+  }
+  .wrapper-info {
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    gap: 15px;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      .name {
+        color: #fff;
+        font-family: Montserrat;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+      }
+      .price {
+        color: #64ff3e;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        border-radius: 2px;
+        background: rgba(100, 255, 62, 0.25);
+        width: fit-content;
+        padding: 2px 8px;
+      }
+    }
+    .wrapper-action {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        border-radius: 2px;
+        cursor: pointer;
+      }
+      .sub {
+        color: rgba(255, 44, 44, 1);
+        background: rgba(255, 62, 62, 0.25);
+      }
+      .plus {
+        color: rgba(99, 255, 44, 1);
+        background: rgba(100, 255, 62, 0.25);
+      }
+      .delete {
+        background: rgba(255, 255, 255, 0.25);
+
+        svg {
+          width: 10px;
+          height: 10px;
+        }
+      }
+      .index-text {
+        color: #fff;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+      }
+    }
+  }
+}

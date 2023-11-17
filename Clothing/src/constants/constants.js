@@ -14,12 +14,12 @@ export const equipments = {
     image: head,
     subItems: [
       [
-        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
-        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
-        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
-        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
-        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
-        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name1", price: 690001, image: head },
+        { id: generalId(), name: "Clothing Name2", price: 690002, image: head },
+        { id: generalId(), name: "Clothing Name3", price: 690003, image: head },
+        { id: generalId(), name: "Clothing Name4", price: 690004, image: head },
+        { id: generalId(), name: "Clothing Name5", price: 690005, image: head },
+        { id: generalId(), name: "Clothing Name6", price: 690006, image: head },
       ],
       [
         { id: generalId(), name: "Clothing Name", price: 690000, image: head },

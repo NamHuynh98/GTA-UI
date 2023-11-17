@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { ReactComponent as Arrow } from "../../assets/icons/arrow.svg";
-import { ReactComponent as Delete } from "../../assets/icons/delete.svg";
 import { ReactComponent as Card } from "../../assets/icons/card.svg";
 import { ReactComponent as Cash } from "../../assets/icons/cash.svg";
 import "./clothingScreen.scss";
 import Slider from "../../components/Slider/index";
 import { equipments } from "../../constants/constants";
 import ItemEquipments from "./components/ItemEquipments/index";
+import ItemBuy from "./components/ItemBuy";
 
 const ClothingScreen = () => {
   const [listEquipment, setListEquipment] = useState([]);
   const [tabSelected, setTabSelected] = useState(null);
+  const [listItemsBuy, setListItemsBuy] = useState([]);
 
   useEffect(() => {
     setListEquipment(equipments);
@@ -40,34 +41,24 @@ const ClothingScreen = () => {
             ))}
           </div>
           {tabSelected && (
-            <div className="content-list-items">
+            <div className="content-list-items" key={tabSelected}>
               {listEquipment[tabSelected].subItems.map((items, index) => (
-                <ItemEquipments items={items} key={index} />
+                <ItemEquipments
+                  items={items}
+                  key={index}
+                  onBuy={(equipment) =>
+                    setListItemsBuy((e) => [...e, equipment])
+                  }
+                />
               ))}
             </div>
           )}
         </div>
         <div className="wrapper-right">
           <div className="wrapper-list-item">
-            <div className="item-buy">
-              <div className="wrapper-img">
-                <img src="" alt="thumbnail" />
-              </div>
-              <div className="wrapper-info">
-                <div className="info">
-                  <div className="name">Item name</div>
-                  <div className="price">$65.361</div>
-                </div>
-                <div className="wrapper-action">
-                  <div className="btn sub">-</div>
-                  <div className="index-text">25</div>
-                  <div className="btn plus">+</div>
-                  <div className="btn delete">
-                    <Delete />
-                  </div>
-                </div>
-              </div>
-            </div>
+            {listItemsBuy.map((item) => (
+              <ItemBuy dataItem={item} />
+            ))}
           </div>
           <div className="invoice">
             <div className="wrapper-label">
