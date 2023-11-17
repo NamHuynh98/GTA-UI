@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ReactComponent as Arrow } from "../../../../assets/icons/arrow.svg";
 import "./itemEquipments.scss";
+import { convertMoneyNumberToString } from "../../../../constants/utils";
 
 const ItemEquipments = ({ items = [], onBuy = () => {} }) => {
   const [index, setIndex] = useState(0);
@@ -12,7 +13,9 @@ const ItemEquipments = ({ items = [], onBuy = () => {} }) => {
       <div className="text-content">
         <div className="title">{items[index].name}</div>
         <div className="line-wrapper">
-          <div className="price">${items[index].price}</div>
+          <div className="price">
+            ${convertMoneyNumberToString(items[index].price)}
+          </div>
           <div className="btn-buy" onClick={() => onBuy(items[index])}>
             Buy
           </div>

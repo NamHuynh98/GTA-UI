@@ -10,6 +10,7 @@ const Slider = ({
   return (
     <div className="slider">
       <input
+        step={1}
         type="range"
         min={minValue}
         max={maxValue}

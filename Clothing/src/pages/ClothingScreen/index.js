@@ -7,15 +7,45 @@ import Slider from "../../components/Slider/index";
 import { equipments } from "../../constants/constants";
 import ItemEquipments from "./components/ItemEquipments/index";
 import ItemBuy from "./components/ItemBuy";
+import { convertMoneyNumberToString } from "../../constants/utils";
 
 const ClothingScreen = () => {
   const [listEquipment, setListEquipment] = useState([]);
   const [tabSelected, setTabSelected] = useState(null);
   const [listItemsBuy, setListItemsBuy] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [valueSlider, setValueSlider] = useState(1);
 
   useEffect(() => {
     setListEquipment(equipments);
   }, []);
+  const onChangeQuantityItem = (value) => {
+    const { quantity, item } = value || {};
+
+    setListItemsBuy((eqs) => {
+      const temp = [...eqs];
+      const eqFound = temp.find((e) => e.item.id === item.id);
+      if (eqFound) eqFound.quantity = quantity;
+      onUpdateTotalPrice(temp);
+      return temp;
+    });
+  };
+  const onUpdateTotalPrice = (listE = []) => {
+    setTotalPrice(
+      listE.reduce((a, b) => {
+        if (!isNaN(a)) return a + b.quantity * b.item.price;
+        return a.quantity * a.item.price + b.quantity * b.item.price;
+      }, 0)
+    );
+  };
+  const onDeleteItem = (item) => {
+    setListItemsBuy((eqs) => {
+      let temp = [...eqs];
+      temp = temp.filter((e) => e.item.id !== item.id);
+      onUpdateTotalPrice(temp);
+      return temp;
+    });
+  };
 
   return (
     <div className="clothing-container">
@@ -46,52 +76,87 @@ const ClothingScreen = () => {
                 <ItemEquipments
                   items={items}
                   key={index}
-                  onBuy={(equipment) =>
-                    setListItemsBuy((e) => [...e, equipment])
-                  }
+                  onBuy={(equipment) => {
+                    const isFoundItem = listItemsBuy.find(
+                      (ib) => ib.item.id === equipment.id
+                    );
+                    if (!isFoundItem) {
+                      onUpdateTotalPrice([
+                        ...listItemsBuy,
+                        { quantity: 1, item: equipment },
+                      ]);
+                      setListItemsBuy((e) => [
+                        ...e,
+                        { quantity: 1, item: equipment },
+                      ]);
+                    }
+                  }}
                 />
               ))}
             </div>
           )}
         </div>
-        <div className="wrapper-right">
-          <div className="wrapper-list-item">
-            {listItemsBuy.map((item) => (
-              <ItemBuy dataItem={item} />
-            ))}
-          </div>
-          <div className="invoice">
-            <div className="wrapper-label">
-              <div className="title">Total Price</div>
-              <div className="price">$65.361.000</div>
+        {listItemsBuy.length && (
+          <div className="wrapper-right">
+            <div className="wrapper-list-item">
+              {listItemsBuy.map((item, i) => (
+                <ItemBuy
+                  dataItem={item.item}
+                  key={i}
+                  onChange={onChangeQuantityItem}
+                  onDeleteItem={onDeleteItem}
+                />
+              ))}
             </div>
-            <div className="wrapper-btn">
-              <div className="btn">
-                <Cash />
-                Cash
-              </div>
-              <div className="btn">
-                <Card />
-                Card
-              </div>
-            </div>
-          </div>
-          <div className="control">
-            <div className="control-content">
-              <span className="label">
-                Rotate X-Position
-                <div className="wrapper-slider"></div>
-                <div className="btn-prev">
-                  <Arrow />
+            <div className="invoice">
+              <div className="wrapper-label">
+                <div className="title">Total Price</div>
+                <div className="price">
+                  ${convertMoneyNumberToString(totalPrice)}
                 </div>
-                <Slider />
-                <div className="btn-next">
-                  <Arrow />
+              </div>
+              <div className="wrapper-btn">
+                <div className="btn" onClick={() => console.log("Cash")}>
+                  <Cash />
+                  Cash
                 </div>
-              </span>
+                <div className="btn" onClick={() => console.log("Card")}>
+                  <Card />
+                  Card
+                </div>
+              </div>
+            </div>
+            <div className="control">
+              <div className="control-content">
+                <span className="label">Rotate X-Position</span>
+                <div className="wrapper-slider">
+                  <div
+                    className="btn-prev"
+                    onClick={() =>
+                      valueSlider > 0 && setValueSlider((v) => v - 1)
+                    }
+                  >
+                    <Arrow />
+                  </div>
+                  <Slider
+                    minValue={1}
+                    maxValue={100}
+                    defaultValue={valueSlider}
+                    onChange={(v) => setValueSlider(Number(v))}
+                  />
+                  <div
+                    className="btn-next"
+                    onClick={() =>
+                      valueSlider < 100 && setValueSlider((v) => v + 1)
+                    }
+                  >
+                    <Arrow />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

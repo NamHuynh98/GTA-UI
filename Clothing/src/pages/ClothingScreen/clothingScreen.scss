@@ -49,6 +49,7 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 3rem;
+    overflow: auto;
 
     .wrapper-left {
       display: flex;
@@ -56,6 +57,7 @@
 
       .tabs-container {
         overflow: auto;
+        max-height: 80vh;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -128,6 +130,7 @@
       }
       .content-list-items {
         overflow: auto;
+        max-height: 80vh;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -142,6 +145,153 @@
     }
     .wrapper-right {
       .wrapper-list-item {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow: auto;
+        max-height: 50vh;
+      }
+      .invoice {
+        margin-top: 20px;
+        border-radius: 3px;
+        border: 1px solid #ffffff1c;
+        background: radial-gradient(
+          631.93% 71.94% at 50% 50%,
+          rgba(255, 255, 255, 0.06) 0%,
+          rgba(255, 255, 255, 0.15) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+
+        .wrapper-label {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          margin-left: 10px;
+
+          .title {
+            color: #fff;
+            font-family: Montserrat;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+          }
+          .price {
+            color: #64ff3e;
+            font-family: Montserrat;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+            border-radius: 2px;
+            background: rgba(100, 255, 62, 0.25);
+            padding: 2px 6px;
+          }
+        }
+        .wrapper-btn {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          .btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+            height: 72px;
+            width: 60px;
+            background: radial-gradient(
+              84.18% 84.18% at 50% 50%,
+              rgba(255, 255, 255, 0.16) 0%,
+              rgba(255, 255, 255, 0) 100%
+            );
+            color: #fff;
+            text-align: center;
+            font-family: Gilroy;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            cursor: pointer;
+
+            &:hover {
+              opacity: 0.7;
+            }
+
+            svg {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+      }
+      .control {
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: radial-gradient(
+          127.41% 100.76% at -25.49% 58.76%,
+          rgba(255, 255, 255, 0.15) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        border-radius: 5px;
+        margin-top: 30px;
+
+        .control-content {
+          display: flex;
+          align-items: center;
+
+          .label {
+            color: #fff;
+            font-family: Montserrat;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            padding: 0 12px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .wrapper-slider {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 0 8px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.02);
+
+            .btn-next {
+              transform: rotate(180deg);
+            }
+
+            .btn-prev,
+            .btn-next {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 20px;
+              height: 20px;
+              border-radius: 2px;
+              background: radial-gradient(
+                73.96% 73.96% at 50% 50%,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0) 100%
+              );
+              cursor: pointer;
+              svg {
+                width: 8px;
+                height: 8px;
+                fill: #fff;
+              }
+            }
+          }
+        }
       }
     }
   }
