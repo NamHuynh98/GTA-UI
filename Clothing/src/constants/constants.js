@@ -56,6 +56,66 @@ export const equipments = {
         { id: generalId(), name: "Clothing Name", price: 690000, image: head },
         { id: generalId(), name: "Clothing Name", price: 690000, image: head },
       ],
+      [
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+      ],
+      [
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+      ],
+      [
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+      ],
+      [
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+      ],
+      [
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+      ],
+      [
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+      ],
+      [
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+      ],
+      [
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+      ],
+      [
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+      ],
+      [
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+      ],
+      [
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+      ],
+      [
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+      ],
+      [
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+      ],
+      [
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+      ],
+      [
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+        { id: generalId(), name: "Clothing Name", price: 690000, image: head },
+      ],
     ],
   },
   jacket: {

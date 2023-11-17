@@ -7,7 +7,10 @@ import Slider from "../../components/Slider/index";
 import { equipments } from "../../constants/constants";
 import ItemEquipments from "./components/ItemEquipments/index";
 import ItemBuy from "./components/ItemBuy";
-import { convertMoneyNumberToString } from "../../constants/utils";
+import { convertMoneyNumberToString, generalId } from "../../constants/utils";
+import InfiniteScroll from "react-infinite-scroll-component";
+import head from "../../assets/images/head.png";
+import { ReactComponent as Spinner } from "../../assets/icons/spinner.svg";
 
 const ClothingScreen = () => {
   const [listEquipment, setListEquipment] = useState([]);
@@ -15,6 +18,7 @@ const ClothingScreen = () => {
   const [listItemsBuy, setListItemsBuy] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [valueSlider, setValueSlider] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     setListEquipment(equipments);
@@ -47,6 +51,50 @@ const ClothingScreen = () => {
     });
   };
 
+  // fake data khi load infinity scroll
+  const fetchMoreData = () => {
+    if (listEquipment[tabSelected].subItems.length >= 40) {
+      setHasMore(false);
+      return;
+    }
+    setTimeout(() => {
+      setListEquipment((lsE) => {
+        const temp = JSON.parse(JSON.stringify(lsE));
+        temp[tabSelected].subItems.push(
+          [
+            {
+              id: generalId(),
+              name: "Clothing Name1",
+              price: 690001,
+              image: head,
+            },
+            {
+              id: generalId(),
+              name: "Clothing Name1",
+              price: 690001,
+              image: head,
+            },
+          ],
+          [
+            {
+              id: generalId(),
+              name: "Clothing Name1",
+              price: 690001,
+              image: head,
+            },
+            {
+              id: generalId(),
+              name: "Clothing Name1",
+              price: 690001,
+              image: head,
+            },
+          ]
+        );
+        return temp;
+      });
+    }, 500);
+  };
+
   return (
     <div className="clothing-container">
       <div className="title">
@@ -71,28 +119,45 @@ const ClothingScreen = () => {
             ))}
           </div>
           {tabSelected && (
-            <div className="content-list-items" key={tabSelected}>
-              {listEquipment[tabSelected].subItems.map((items, index) => (
-                <ItemEquipments
-                  items={items}
-                  key={index}
-                  onBuy={(equipment) => {
-                    const isFoundItem = listItemsBuy.find(
-                      (ib) => ib.item.id === equipment.id
-                    );
-                    if (!isFoundItem) {
-                      onUpdateTotalPrice([
-                        ...listItemsBuy,
-                        { quantity: 1, item: equipment },
-                      ]);
-                      setListItemsBuy((e) => [
-                        ...e,
-                        { quantity: 1, item: equipment },
-                      ]);
-                    }
-                  }}
-                />
-              ))}
+            <div
+              className="content-list-items"
+              key={tabSelected}
+              id="scrollableDiv"
+            >
+              <InfiniteScroll
+                dataLength={listEquipment[tabSelected].subItems.length}
+                next={fetchMoreData}
+                hasMore={hasMore}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "10px",
+                }}
+                loader={<Spinner className="loading" />}
+                scrollableTarget="scrollableDiv"
+              >
+                {listEquipment[tabSelected].subItems.map((items, index) => (
+                  <ItemEquipments
+                    items={items}
+                    key={index}
+                    onBuy={(equipment) => {
+                      const isFoundItem = listItemsBuy.find(
+                        (ib) => ib.item.id === equipment.id
+                      );
+                      if (!isFoundItem) {
+                        onUpdateTotalPrice([
+                          ...listItemsBuy,
+                          { quantity: 1, item: equipment },
+                        ]);
+                        setListItemsBuy((e) => [
+                          ...e,
+                          { quantity: 1, item: equipment },
+                        ]);
+                      }
+                    }}
+                  />
+                ))}
+              </InfiniteScroll>
             </div>
           )}
         </div>

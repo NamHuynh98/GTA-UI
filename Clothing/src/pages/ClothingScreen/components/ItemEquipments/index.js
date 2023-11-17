@@ -21,8 +21,8 @@ const ItemEquipments = ({ items = [], onBuy = () => {} }) => {
           </div>
           <div className="action-change">
             <div
-              className={`btn-prev ${index === 1 && "disabled"}`}
-              onClick={() => index > 1 && setIndex((i) => i - 1)}
+              className={`btn-prev ${index === 0 && "disabled"}`}
+              onClick={() => index > 0 && setIndex((i) => i - 1)}
             >
               <Arrow />
             </div>
