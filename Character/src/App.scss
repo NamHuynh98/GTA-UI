@@ -1,0 +1,29 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-image: url("./assets/images/BG.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 12px;
+  background-color: #0000;
+}
+
+::-webkit-scrollbar:hover {
+  background-color: #0000001f;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  box-shadow: inset 0 0 0 12px #0000005e;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  box-shadow: inset 0 0 0 12px #0000008a;
+  border-radius: 12px;
+}
