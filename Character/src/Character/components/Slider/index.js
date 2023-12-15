@@ -6,9 +6,10 @@ const Slider = ({
   minValue = 0,
   maxValue = 200,
   onChange = () => {},
+  className = null,
 }) => {
   return (
-    <div className="slider">
+    <div className={`slider ${className && className}`}>
       <input
         type="range"
         min={minValue}

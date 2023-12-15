@@ -259,5 +259,52 @@
     }
   }
   .right-container {
+    width: 25vw;
+    padding: 3vh 0.5vw 3vh 3vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+    overflow: auto;
+    margin-right: 2.5vw;
+
+    .wrapper-tab-action {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5vh;
+
+      .items {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        max-height: 23vh;
+        overflow: auto;
+
+        .item {
+          border: 1px solid transparent;
+          cursor: pointer;
+          width: 6vw;
+          height: 6vw;
+          max-width: 100px;
+          max-height: 100px;
+          margin: auto;
+
+          img {
+            pointer-events: none;
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+          }
+
+          &:hover,
+          &.active {
+            border: 1px solid #b71eff;
+            background: radial-gradient(
+              95.14% 79.72% at 50% 50%,
+              rgba(183, 30, 255, 0.77) 0%,
+              rgba(183, 30, 255, 0) 100%
+            );
+          }
+        }
+      }
+    }
   }
 }

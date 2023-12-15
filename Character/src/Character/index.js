@@ -8,6 +8,12 @@ import { ReactComponent as HAIR } from "../assets/icons/hair.svg";
 import { ReactComponent as LOOK } from "../assets/icons/look.svg";
 import Tip from "./components/Tip";
 import Key from "./components/Key/index";
+import DNATab from "./components/DNATab";
+import BeardTab from "./components/BeardTab/index";
+import EyeTab from "./components/EyeTab/index";
+import HairTab from "./components/HairTab";
+import LookTab from "./components/LookTab/index";
+
 const TABS = {
   DNA: "dna",
   LOOK: "look",
@@ -18,6 +24,24 @@ const TABS = {
 
 const Character = () => {
   const [tabActive, setTabActive] = useState(TABS.DNA);
+
+  const renderTabContent = (tab) => {
+    switch (tab) {
+      case TABS.DNA:
+        return <DNATab />;
+      case TABS.BEARD:
+        return <BeardTab />;
+      case TABS.EYES:
+        return <EyeTab />;
+      case TABS.HAIR:
+        return <HairTab />;
+      case TABS.LOOK:
+        return <LookTab />;
+      default:
+        return;
+    }
+  };
+
   return (
     <div className="character-container">
       <svg width="0" height="0">
@@ -108,7 +132,7 @@ const Character = () => {
           <button>Randomize character</button>
         </div>
       </div>
-      <div className="right-container"></div>
+      <div className="right-container">{renderTabContent(tabActive)}</div>
     </div>
   );
 };

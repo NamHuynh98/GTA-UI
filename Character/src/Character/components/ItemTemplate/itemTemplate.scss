@@ -1,0 +1,127 @@
+.item-template {
+  .label {
+    width: 100%;
+    padding: 1.2vh 1.5vw;
+    border-radius: 3px;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0.55) 70%
+    );
+    position: relative;
+    .title {
+      text-align: right;
+      text-shadow: 0px 4px 41px rgba(183, 30, 255, 0.55);
+      font-family: Montserrat;
+      font-size: clamp(0px, 1.5vw, 20px);
+      font-style: normal;
+      font-weight: bold;
+      line-height: normal;
+      background: radial-gradient(
+        245.87% 130.93% at 50% 50%,
+        rgba(183, 30, 255, 0.9) 0%,
+        rgba(183, 30, 255, 0) 100%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+    }
+    .sub-title {
+      color: rgba(255, 255, 255, 0.25);
+      text-align: right;
+      font-family: Montserrat;
+      font-size: clamp(0px, 0.7vw, 12px);
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+    }
+
+    &::after {
+      content: "";
+      height: 50%;
+      width: 3px;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #b71eff;
+      box-shadow: 0px 0px 21px 0px #b71eff;
+    }
+  }
+  .content {
+    height: 5vh;
+    max-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.13) 70%
+    );
+
+    .slider-style {
+      margin: 0 2vw;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      border: 1px solid transparent;
+      background: radial-gradient(
+        95.14% 79.72% at 50% 50%,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      width: 6vw;
+      max-width: 100px;
+      gap: 4px;
+      color: #fff;
+      font-family: Montserrat;
+      font-size: clamp(0px, 0.7vw, 13px);
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+      cursor: pointer;
+      outline: none;
+
+      &:hover,
+      &.active {
+        border: 1px solid #b81effc5;
+        background: radial-gradient(
+          95.14% 79.72% at 50% 50%,
+          rgba(183, 30, 255, 0.5) 0%,
+          rgba(183, 30, 255, 0) 100%
+        );
+      }
+    }
+
+    .wrapper-colors {
+      width: 100%;
+      height: 100%;
+      padding: 1vh 1vw;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.3vw;
+      transition: all 0.5s;
+
+      .color {
+        width: 1.5vw;
+        height: 100%;
+        cursor: pointer;
+        border: 2px solid transparent;
+
+        &:hover,
+        &.active {
+          border-color: #b71eff;
+        }
+      }
+    }
+  }
+}
